@@ -6,12 +6,12 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+spacy = "*"
 flask = "*"
 jinja2 = "*"
 flask-sqlalchemy = "*"
 tweepy = "*"
-basilica = "*"
 python-dotenv = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.8"
