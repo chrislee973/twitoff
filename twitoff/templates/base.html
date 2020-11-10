@@ -21,7 +21,7 @@
     <article class="flex two" style="padding: 3em 1em;">
       {% block content %}
       <div>
-        <h1>{{ title }}</h1>
+        <h2>{{ title }}</h2>
         <form action="/compare" method="post">
           <select name="user1">
             {% for user in users %}
@@ -35,6 +35,11 @@
           </select>
           <input type="text" name="tweet_text" placeholder="Tweet text to predict">
           <input type="submit" value="Compare Users">
+          <article class="card">
+            <header>
+              <h2>Hello World!</h2>
+            </header>
+          </article>
         </form>
       </div>
       <div>
@@ -46,9 +51,41 @@
           <input type="text" name="user_name" placeholder="User to add">
           <input type="submit" value="Add User">
         </form>
+        <h1>Hello World!</h1>
+        <select>
+          <option>Select an option</option>
+          <option>Another option</option>
+          <option>Final option</option>
+        </select>
+        
+        <div class="third">
+          <input class="stack" placeholder="Name" />
+          <textarea class="stack" placeholder="Tweets"></textarea>
+          <button class="button stack">Submit</button>
+        </div>
       </div>
       {% endblock %}
     </article>
+
+    <table class="primary">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Tweets</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.tweets }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
     <!-- <script src="https://cdn.jsdelivr.net/npm/umbrellajs"/> -->
   </body>
 </html>

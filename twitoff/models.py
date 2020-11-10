@@ -23,5 +23,15 @@ class Tweet(DB.Model):
     user = DB.relationship('User', backref = DB.backref('tweets', lazy=True))
 
     def __repr__(self):
-        return f"<Tweet: {self.text}>"
+        return self.text
+
+
+def insert_example_users():
+    nick = User(id=1, name="Nick")
+    elon = User(id=2, name="Elon")
+    nick_tweet = Tweet(id=1, text= "Hi I'm Nick!", user = nick)
+    elon_tweet = Tweet(id=2, text = "Ha. Cybertruck big and go vroom.", user = elon)
+    DB.session.add(nick)
+    DB.session.add(elon)
+    DB.session.commit()
 
