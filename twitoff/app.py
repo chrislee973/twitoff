@@ -1,7 +1,7 @@
 """Main app/routing file for Twitoff"""
 
 from flask import Flask, render_template
-from .models import DB,User, insert_users
+from .models import DB,User, insert_example_users
 
 
 def create_app():
