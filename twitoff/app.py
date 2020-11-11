@@ -1,8 +1,8 @@
 """Main app/routing file for Twitoff"""
 
 from flask import Flask, render_template
-from .models import DB,User, insert_example_users
-
+from .models import DB,User
+from .twitter import insert_example_users
 
 def create_app():
     app = Flask(__name__)
@@ -14,10 +14,21 @@ def create_app():
 
     @app.route('/')
     def root():
+        # DB.drop_all()
+        # DB.create_all()
+        # insert_example_users()
+        return render_template('base.html', title='home', users=User.query.all())
+
+    @app.route('/update')
+    def update():
+        insert_example_users()
+        return render_template('base.html', title='Users updated!', users=User.query.all())
+
+    @app.route('/reset')
+    def reset():
         DB.drop_all()
         DB.create_all()
-        insert_example_users()
-        return render_template('base.html', title='home', users=User.query.all())
+        return render_template('base.html', title='Reset database!')
 
     return app
 
