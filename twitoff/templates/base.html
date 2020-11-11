@@ -22,7 +22,7 @@
       {% block content %}
       <div>
         <h2>{{ title }}</h2>
-        <form action="/compare" method="post">
+        <form method="post">
           <select name="user1">
             {% for user in users %}
             <option value="{{ user.name }}">{{ user.name }}</option>
@@ -34,38 +34,24 @@
             {% endfor %}
           </select>
           <input type="text" name="tweet_text" placeholder="Tweet text to predict">
-          <input type="submit" value="Compare Users">
-          <article class="card">
-            <header>
-              <h2>Hello World!</h2>
-            </header>
-          </article>
+          <input name="compare_button" type="submit" value="Compare Users">
         </form>
+        <h>{{ compare_message }}</h>
       </div>
       <div>
         <h2>Users</h2>
         {% for user in users %}
         <a href="/user/{{ user.name }}"><span class="stack">{{ user.name }}</span></a>
         {% endfor %}
-        <form action="/user" method="post">
+        <form method="post">
           <input type="text" name="user_name" placeholder="User to add">
-          <input type="submit" value="Add User">
+          <input name="user_button" type="submit" value="Add User">
         </form>
-        <h1>Hello World!</h1>
-        <select>
-          <option>Select an option</option>
-          <option>Another option</option>
-          <option>Final option</option>
-        </select>
-        
-        <div class="third">
-          <input class="stack" placeholder="Name" />
-          <textarea class="stack" placeholder="Tweets"></textarea>
-          <button class="button stack">Submit</button>
-        </div>
+        <h1>{{ user_add_message }}</h1>
       </div>
       {% endblock %}
     </article>
+
 
     <table class="primary">
       <thead>

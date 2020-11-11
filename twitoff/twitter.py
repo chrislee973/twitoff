@@ -21,6 +21,7 @@ model = spacy.load('model')
 def vectorize_tweet(tweet_text):
     return model(tweet_text).vector
 
+
 def add_or_update_user(username):
     """Add or update a user and their tweets, error if not Twitter user."""
     try:
@@ -57,3 +58,7 @@ def insert_example_users():
     # DB.session.commit()
     add_or_update_user('austen')
     add_or_update_user('elonmusk')
+
+def update_all_users():
+    for user in User.query.all():
+        add_or_update_user(user.name)
