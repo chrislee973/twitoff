@@ -22,7 +22,7 @@
       {% block content %}
       <div>
         <h2>{{ title }}</h2>
-        <form method="post">
+        <form action='/' method="post">
           <select name="user1">
             {% for user in users %}
             <option value="{{ user.name }}">{{ user.name }}</option>
@@ -43,11 +43,11 @@
         {% for user in users %}
         <a href="/user/{{ user.name }}"><span class="stack">{{ user.name }}</span></a>
         {% endfor %}
-        <form method="post">
+        <form action='/' method="post">
           <input type="text" name="user_name" placeholder="User to add">
           <input name="user_button" type="submit" value="Add User">
         </form>
-        <h1>{{ user_add_message }}</h1>
+        <h>{{ user_add_message }}</h>
       </div>
       {% endblock %}
     </article>

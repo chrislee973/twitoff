@@ -4,11 +4,6 @@ import tweepy
 from .models import DB, Tweet, User
 import spacy
 
-TWITTER_USERS = ['calebhicks', 'elonmusk', 'rrherr', 'SteveMartinToGo',
-                 'alyankovic', 'nasa', 'sadserver', 'jkhowland', 'austen',
-                 'common_squirrel', 'KenJennings', 'conanobrien',
-                 'big_ben_clock', 'IAM_SHAKESPEARE']
-
 
 TWITTER_API_KEY = getenv('TWITTER_API_KEY')
 TWITTER_API_KEY_SECRET = getenv('TWITTER_API_KEY_SECRET')

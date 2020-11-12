@@ -16,7 +16,6 @@ def create_app():
     DB.init_app(app)
 
     @app.route('/', methods=['POST', 'GET'])
-    #@app.route('/', methods=['GET'])
     def root():
         if request.method == 'POST':
             #if "Compare Users" button is clicked
@@ -29,6 +28,7 @@ def create_app():
                 else:
                     prediction = predict_user(user1, user2, request.values['tweet_text'])
                     compare_message = f"'{request.values['tweet_text']}' is more likely to be said by {user1 if prediction else user2} than {user2 if prediction else user1}."
+            #if "Add User" button is clicked
             elif "user_button" in request.form:
                 compare_message=''
                 name= request.values['user_name']
@@ -39,6 +39,8 @@ def create_app():
                 except Exception as e:
                     user_add_message = f"Error adding {name}: {e}."
                     tweets=[]
+        
+        #If request.method == 'GET'
         else:
             compare_message = ''
             user_add_message=''
@@ -71,14 +73,14 @@ def create_app():
         return render_template('base.html', title='Prediction', message=message)
 
     
-    @app.route('/user', methods=['POST'])
+    #@app.route('/user', methods=['POST'])
     @app.route('/user/<name>', methods = ['GET'])
     def user(name=None, message=''):
         name= name or request.values['user_name']
         try:
-            if request.method == 'POST':
-                add_or_update_user(name)
-                message = f"{name} was successfully added!"
+            # if request.method == 'POST':
+            #     add_or_update_user(name)
+            #     message = f"{name} was successfully added!"
             tweets= User.query.filter(User.name == name).one().tweets
         except Exception as e:
             message = f"Error adding {name}: {e}."
